@@ -2,7 +2,7 @@
 import { InputProps, OTPInputViewState } from '@twotalltotems/react-native-otp-input';
 import React, { Component } from 'react'
 import { View, TextInput, TouchableWithoutFeedback, Keyboard, Platform, I18nManager, EmitterSubscription, } from 'react-native'
-import Clipboard from '@react-native-community/clipboard';
+import { Clipboard } from 'react-native';
 import styles from './styles'
 import { isAutoFillSupported } from './helpers/device'
 import { codeToArray } from './helpers/codeToArray'
@@ -125,7 +125,7 @@ export default class OTPInputView extends Component<InputProps, OTPInputViewStat
                 }
             } else {
                 text.split("").forEach((value) => {
-                    if(index < pinCount) {
+                    if (index < pinCount) {
                         newdigits[index] = value;
                         index += 1;
                     }
@@ -198,7 +198,7 @@ export default class OTPInputView extends Component<InputProps, OTPInputViewStat
                         this.handleChangeText(index, text)
                     }}
                     onKeyPress={({ nativeEvent: { key } }) => { this.handleKeyPressTextInput(index, key) }}
-                    value={ !clearInputs ? digits[index]: "" }
+                    value={!clearInputs ? digits[index] : ""}
                     keyboardAppearance={keyboardAppearance}
                     keyboardType={keyboardType}
                     textContentType={isAutoFillSupported ? "oneTimeCode" : "none"}
